@@ -1,7 +1,7 @@
 import Foundation
 
 protocol FetchPopularMovies {
-    func execute(completion: @escaping (Result<[Movie], Error>) -> Void)
+    func execute(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void)
 }
 
 class FetchPopularMoviesImpl: FetchPopularMovies {
@@ -11,7 +11,7 @@ class FetchPopularMoviesImpl: FetchPopularMovies {
         self.movieRepository = movieRepository
     }
     
-    func execute(completion: @escaping (Result<[Movie], Error>) -> Void) {
-        movieRepository.fetchPopularMovies(completion: completion)
+    func execute(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        movieRepository.fetchPopularMovies(page: page, completion: completion)
     }
 }

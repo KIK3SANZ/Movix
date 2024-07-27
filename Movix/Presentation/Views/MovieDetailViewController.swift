@@ -18,7 +18,6 @@ class MovieDetailViewController: UIViewController {
                 if let errorMessage = self?.viewModel.errorMessage {
                     print("ERROR-MESSAGE: ", errorMessage)
                 } else {
-                    print("RESULT-MOVIE: ", self?.viewModel.movie)
                 }
             }
         }

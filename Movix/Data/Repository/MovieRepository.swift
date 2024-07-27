@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MovieRepositoryProtocol {
-    func fetchPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void)
+    func fetchPopularMovies(page: Int,completion: @escaping (Result<[Movie], Error>) -> Void)
     func fetchMovieDetails(movieID: Int, completion: @escaping (Result<Movie, Error>) -> Void)
 }
 
@@ -12,8 +12,8 @@ class MovieRepository: MovieRepositoryProtocol {
         self.movieAPI = movieAPI
     }
     
-    func fetchPopularMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
-        movieAPI.fetchPopularMovies { result in
+    func fetchPopularMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        movieAPI.fetchPopularMovies(page: page) { result in
             switch result {
             case .success(let movies):
                 completion(.success(movies))

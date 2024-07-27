@@ -1,34 +1,152 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var layoutToggleButton: UIBarButtonItem!
+    private var isGridView: Bool = true
+    private let refreshControl = UIRefreshControl()
+    
+    private let gridLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 100, height: 150)
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        return layout
+    }()
+    
+    private let listLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 20, height: 150) // Tamaño de celda para lista
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 0
+        return layout
+    }()
+
     var viewModel: MovieListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupRefreshControl()
         loadMovies()
     }
     
-    private func loadMovies() {
-        viewModel.loadPopularMovies {[weak self] in
+    func setupUI(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.collectionViewLayout = isGridView ? gridLayout : listLayout
+        
+        collectionView.register(UINib(nibName: "MovieGridCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MovieGridCell")
+        collectionView.register(UINib(nibName: "MovieListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MovieListCell")
+        
+        layoutToggleButton.image = UIImage(systemName: isGridView ? "square.split.1x2" : "square.grid.2x2")
+        layoutToggleButton.target = self
+        layoutToggleButton.action = #selector(toggleLayout)
+    }
+    
+    @IBAction func showSortOptions(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Ordenar por", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Titulo", style: .default, handler: { _ in
+            self.sortMovies(by: 0)
+        }))
+        alert.addAction(UIAlertAction(title: "Fecha", style: .default, handler: { _ in
+            self.sortMovies(by: 1)
+        }))
+        alert.addAction(UIAlertAction(title: "Popularidad", style: .default, handler: { _ in
+            self.sortMovies(by: 2)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @objc private func toggleLayout() {
+        isGridView.toggle()
+        let newLayout = isGridView ? gridLayout : listLayout
+        collectionView.reloadData()
+        collectionView.setCollectionViewLayout(newLayout, animated: true) {_ in 
+            self.collectionView.layoutIfNeeded()
+        }
+         
+        layoutToggleButton.image = UIImage(systemName: isGridView ? "square.split.1x2" : "square.grid.2x2")
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshMovies), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshMovies() {
+        loadMovies {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func sortMovies(by option: Int) {
+        viewModel.sortMovies(by: option)
+        collectionView.reloadData()
+    }
+    
+    private func loadMovies(completion: (() -> Void)? = nil){
+        viewModel.loadPopularMovies{[weak self] in
             DispatchQueue.main.async {
                 if let errorMessage = self?.viewModel.errorMessage{
-                    print("ERROR-MESSAGE: ", errorMessage)
+                    self?.showError(message: errorMessage)
                 }else{
-                    //self.tableView.reloadData()
-                    print("Recargar LISTA/GRID: ", self?.viewModel.popularMovies)
+                    self?.collectionView.reloadData()
                 }
+                completion?()
             }
         }
     }
     
-    @IBAction func openDetail(_ sender: UIButton) {
-        let movie = viewModel.popularMovies[0]
-        self.performSegue(withIdentifier: "to_detail", sender: movie)
+    private func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            viewModel.loadMoreMovies{ [weak self] in
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
     }
 
 }
 
-extension MovieListViewController{
+extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.popularMovies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if isGridView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCollectionViewCell
+            let movie = viewModel.popularMovies[indexPath.row]
+            cell.configure(with: movie)
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieListCell", for: indexPath) as! MovieListCollectionViewCell
+            let movie = viewModel.popularMovies[indexPath.row]
+            cell.configure(with: movie)
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = viewModel.popularMovies[indexPath.row]
+        performSegue(withIdentifier: "to_detail", sender: movie)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "to_detail" {
            if let destinationVC = segue.destination as? MovieDetailViewController,
@@ -38,4 +156,33 @@ extension MovieListViewController{
            }
        }
     }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MovieListViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if isGridView {
+            return CGSize(width: self.view.frame.width * 0.3, height: self.view.frame.width * 0.4)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width - 20, height: 100)
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return isGridView ? 5 : 0
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return isGridView ? 15 : 1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return isGridView ? UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) : UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+     
 }
