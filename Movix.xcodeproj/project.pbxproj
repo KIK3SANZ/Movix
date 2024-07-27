@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019E1302691413CA7FA7E91C /* Pods_Movix_MovixUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961A7714C19E439C4A8C284D /* Pods_Movix_MovixUITests.framework */; };
+		0DEF3369D512264F0F54E452 /* Pods_Movix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813D10644D8BE326EE9348FA /* Pods_Movix.framework */; };
+		10E9019C7973390192ED78D0 /* Pods_MovixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A3C8CC04065D8C3563254A2 /* Pods_MovixTests.framework */; };
 		980CF5372C54897100C96C70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980CF5362C54897100C96C70 /* AppDelegate.swift */; };
 		980CF53B2C54897100C96C70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980CF53A2C54897100C96C70 /* ViewController.swift */; };
 		980CF53E2C54897100C96C70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 980CF53D2C54897100C96C70 /* Base */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D1B6101FA604960B11DD74F /* Pods-Movix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix.release.xcconfig"; path = "Target Support Files/Pods-Movix/Pods-Movix.release.xcconfig"; sourceTree = "<group>"; };
+		4A3C8CC04065D8C3563254A2 /* Pods_MovixTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovixTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E5188FC50DF30AC63132BCB /* Pods-Movix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix.debug.xcconfig"; path = "Target Support Files/Pods-Movix/Pods-Movix.debug.xcconfig"; sourceTree = "<group>"; };
+		596439A1D52A1A32953939A5 /* Pods-MovixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovixTests.release.xcconfig"; path = "Target Support Files/Pods-MovixTests/Pods-MovixTests.release.xcconfig"; sourceTree = "<group>"; };
+		813D10644D8BE326EE9348FA /* Pods_Movix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		961A7714C19E439C4A8C284D /* Pods_Movix_MovixUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movix_MovixUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980CF5332C54897100C96C70 /* Movix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980CF5362C54897100C96C70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		980CF53A2C54897100C96C70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +56,9 @@
 		980CF5532C54897200C96C70 /* MovixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		980CF5572C54897200C96C70 /* MovixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovixUITests.swift; sourceTree = "<group>"; };
 		980CF5592C54897200C96C70 /* MovixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovixUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9D661FF78435E302CF8DA4F3 /* Pods-Movix-MovixUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix-MovixUITests.release.xcconfig"; path = "Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B4197C24AE32157A4B3E65EE /* Pods-MovixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovixTests.debug.xcconfig"; path = "Target Support Files/Pods-MovixTests/Pods-MovixTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F0B19550E1198AD32CB9CD5D /* Pods-Movix-MovixUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix-MovixUITests.debug.xcconfig"; path = "Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEF3369D512264F0F54E452 /* Pods_Movix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E9019C7973390192ED78D0 /* Pods_MovixTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019E1302691413CA7FA7E91C /* Pods_Movix_MovixUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		064EE0E6E932FEE90F444A09 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E5188FC50DF30AC63132BCB /* Pods-Movix.debug.xcconfig */,
+				2D1B6101FA604960B11DD74F /* Pods-Movix.release.xcconfig */,
+				F0B19550E1198AD32CB9CD5D /* Pods-Movix-MovixUITests.debug.xcconfig */,
+				9D661FF78435E302CF8DA4F3 /* Pods-Movix-MovixUITests.release.xcconfig */,
+				B4197C24AE32157A4B3E65EE /* Pods-MovixTests.debug.xcconfig */,
+				596439A1D52A1A32953939A5 /* Pods-MovixTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6D06103FF3FF691C291FFBDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				813D10644D8BE326EE9348FA /* Pods_Movix.framework */,
+				961A7714C19E439C4A8C284D /* Pods_Movix_MovixUITests.framework */,
+				4A3C8CC04065D8C3563254A2 /* Pods_MovixTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		980CF52A2C54897100C96C70 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +120,8 @@
 				980CF54C2C54897200C96C70 /* MovixTests */,
 				980CF5562C54897200C96C70 /* MovixUITests */,
 				980CF5342C54897100C96C70 /* Products */,
+				064EE0E6E932FEE90F444A09 /* Pods */,
+				6D06103FF3FF691C291FFBDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 980CF55D2C54897200C96C70 /* Build configuration list for PBXNativeTarget "Movix" */;
 			buildPhases = (
+				AA2D8A89CDC93E34922FE42C /* [CP] Check Pods Manifest.lock */,
 				980CF52F2C54897100C96C70 /* Sources */,
 				980CF5302C54897100C96C70 /* Frameworks */,
 				980CF5312C54897100C96C70 /* Resources */,
+				F31747BAC44A41B6DD90739F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +191,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 980CF5602C54897200C96C70 /* Build configuration list for PBXNativeTarget "MovixTests" */;
 			buildPhases = (
+				2E625E5A024845C8C30A628A /* [CP] Check Pods Manifest.lock */,
 				980CF5452C54897200C96C70 /* Sources */,
 				980CF5462C54897200C96C70 /* Frameworks */,
 				980CF5472C54897200C96C70 /* Resources */,
@@ -166,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 980CF5632C54897200C96C70 /* Build configuration list for PBXNativeTarget "MovixUITests" */;
 			buildPhases = (
+				6FB602702DC6F377F7115254 /* [CP] Check Pods Manifest.lock */,
 				980CF54F2C54897200C96C70 /* Sources */,
 				980CF5502C54897200C96C70 /* Frameworks */,
 				980CF5512C54897200C96C70 /* Resources */,
+				0C0E978C74C0868D8CF636ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,6 +295,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C0E978C74C0868D8CF636ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E625E5A024845C8C30A628A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovixTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FB602702DC6F377F7115254 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movix-MovixUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA2D8A89CDC93E34922FE42C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movix-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F31747BAC44A41B6DD90739F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movix/Pods-Movix-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movix/Pods-Movix-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movix/Pods-Movix-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		980CF52F2C54897100C96C70 /* Sources */ = {
@@ -433,6 +582,7 @@
 		};
 		980CF55E2C54897200C96C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E5188FC50DF30AC63132BCB /* Pods-Movix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,6 +616,7 @@
 		};
 		980CF55F2C54897200C96C70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1B6101FA604960B11DD74F /* Pods-Movix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -499,6 +650,7 @@
 		};
 		980CF5612C54897200C96C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4197C24AE32157A4B3E65EE /* Pods-MovixTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -519,6 +671,7 @@
 		};
 		980CF5622C54897200C96C70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 596439A1D52A1A32953939A5 /* Pods-MovixTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -539,6 +692,7 @@
 		};
 		980CF5642C54897200C96C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0B19550E1198AD32CB9CD5D /* Pods-Movix-MovixUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -557,6 +711,7 @@
 		};
 		980CF5652C54897200C96C70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D661FF78435E302CF8DA4F3 /* Pods-Movix-MovixUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
