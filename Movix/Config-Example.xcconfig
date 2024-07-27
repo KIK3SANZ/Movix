@@ -1,0 +1,12 @@
+//
+//  Config-Example.xcconfig
+//  Movix
+//
+//  Created by Enrique Sanz on 27/07/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_TOKEN = your_api_token_here
+BASE_URL = https:/$()/api.themoviedb.org

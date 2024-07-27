@@ -5,7 +5,14 @@
 
 ## User settings
 xcuserdata/
-
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+**/.swiftpm/xcode/xcuserdata/
+**/*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+**/*.xcworkspace/xcshareddata/*.xccheckout
+**/*.xcworkspace/xcshareddata/*.xcscmblueprint
+**/*.playground/**/timeline.xctimeline
+.idea/
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
@@ -30,6 +37,7 @@ DerivedData/
 *.ipa
 *.dSYM.zip
 *.dSYM
+
 
 ## Playgrounds
 timeline.xctimeline
@@ -83,3 +91,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+Config.xcconfig
+*.xcconfig
+!Config-Example.xcconfig
