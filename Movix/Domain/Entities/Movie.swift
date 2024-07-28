@@ -9,6 +9,7 @@ struct Movie: Identifiable, Codable {
     let voteCount:Int
     let releaseDate:String
     let popularity: Double
+    var isFavorite: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id

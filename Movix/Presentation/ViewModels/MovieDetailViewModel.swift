@@ -4,6 +4,7 @@ protocol MovieDetailViewModel {
     var movie: Movie? { get }
     var errorMessage: String? { get }
     func loadMovieDetails(movieID: Int, completion: @escaping () -> Void)
+    func toggleFavorite(movie: Movie)
 }
 
 class MovieDetailViewModelImpl: MovieDetailViewModel {
@@ -19,7 +20,9 @@ class MovieDetailViewModelImpl: MovieDetailViewModel {
         fetchMovieDetails.execute(movieID: movieID) { [weak self] result in
             switch result {
             case .success(let movie):
-                self?.movie = movie
+                var fetchedMovie = movie
+                fetchedMovie.isFavorite = CoreDataHelper.shared.isMovieFavorite(id: movie.id)
+                self?.movie = fetchedMovie
                 self?.errorMessage = nil
             case .failure(let error):
                 self?.movie = nil
@@ -27,5 +30,16 @@ class MovieDetailViewModelImpl: MovieDetailViewModel {
             }
             completion()
         }
+    }
+    
+    func toggleFavorite(movie: Movie) {
+        var updatedMovie = movie
+        if updatedMovie.isFavorite {
+            CoreDataHelper.shared.deleteFavoriteMovie(by: updatedMovie.id)
+        } else {
+            CoreDataHelper.shared.saveFavoriteMovie(updatedMovie)
+        }
+        updatedMovie.isFavorite.toggle()
+        self.movie = updatedMovie
     }
 }

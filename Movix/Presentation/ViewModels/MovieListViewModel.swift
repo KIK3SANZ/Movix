@@ -44,7 +44,12 @@ class MovieListViewModelImpl: MovieListViewModel {
                 if movies.isEmpty {
                     self.hasMorePages = false
                 } else {
-                    self.popularMovies.append(contentsOf: movies)
+                    var moviesMap = movies.map { movie in
+                        var updatedMovie = movie
+                        updatedMovie.isFavorite = CoreDataHelper.shared.isMovieFavorite(id: movie.id)
+                        return updatedMovie
+                    }
+                    self.popularMovies.append(contentsOf: moviesMap)//movies
                 }
                 self.errorMessage = nil
             case .failure(let error):
