@@ -10,6 +10,11 @@ struct Movie: Identifiable, Codable {
     let releaseDate:String
     let popularity: Double
     var isFavorite: Bool = false
+    var status: String?
+    var voteAverage: Double?
+    var genres:[Genre]?
+    var spokenLanguages:[Language]?
+    var runtime: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,6 +25,11 @@ struct Movie: Identifiable, Codable {
         case voteCount
         case releaseDate
         case popularity
+        case status
+        case voteAverage
+        case genres
+        case spokenLanguages
+        case runtime
     }
 }
 

@@ -19,7 +19,7 @@ class MovieGridCollectionViewCell: UICollectionViewCell {
     }
         
     func configure(with movie: Movie) {
-        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)") {
+        if let imageUrl = URL(string: movie.fullPosterURL) {
             imageView.sd_setImage(with: imageUrl, completed: nil)
         }else{
             imageView.image = nil

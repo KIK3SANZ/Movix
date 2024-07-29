@@ -1,7 +1,19 @@
 import UIKit
+import SDWebImage
 
 class MovieDetailViewController: UIViewController {
     @IBOutlet weak var favoriteToggleButton: UIBarButtonItem!
+    @IBOutlet weak var imvPoster: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblOverview: UILabel!
+    @IBOutlet weak var lblReleaseDate: UILabel!
+    @IBOutlet weak var lblVoteAverage: UILabel!
+    @IBOutlet weak var lblStatus: UILabel!
+    @IBOutlet weak var lblPopularity: UILabel!
+    @IBOutlet weak var lblGenres: UILabel!
+    @IBOutlet weak var lblLanguages: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    
     var viewModel: MovieDetailViewModel!
     var movieID: Int!
 
@@ -12,6 +24,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     func setupUI(){
+        imvPoster.layer.cornerRadius = 10
         favoriteToggleButton.target = self
         favoriteToggleButton.action = #selector(toggleFavorite)
         updateFavoriteButton()
@@ -21,6 +34,26 @@ class MovieDetailViewController: UIViewController {
         guard let movie = viewModel.movie else { return }
         let isFavorite = CoreDataHelper.shared.isMovieFavorite(id: movie.id)
         favoriteToggleButton.image = isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+    }
+    
+    private func updateDetailUI(){
+        guard let movie = viewModel.movie else { return }
+        lblTitle.text = movie.title
+        lblOverview.text = movie.overview
+        lblReleaseDate.text = movie.releaseDate
+        let voteAveragePercentage = Int((movie.voteAverage ?? 0.0) * 10)
+        lblVoteAverage.text = "\(voteAveragePercentage)%"
+        lblStatus.text = movie.status ?? ""
+        lblPopularity.text = "\(movie.popularity)"
+        lblGenres.text = movie.concatenatedGenreNames
+        lblLanguages.text = movie.concatenatedLanguageNames
+        lblTime.text = movie.runtime?.formattedRuntime() ?? ""
+
+        if let imageUrl = URL(string: movie.fullPosterURL) {
+            imvPoster.sd_setImage(with: imageUrl, completed: nil)
+        }else{
+            imvPoster.image = nil
+        }
     }
     
     @objc private func toggleFavorite() {
@@ -37,6 +70,7 @@ class MovieDetailViewController: UIViewController {
                     print("ERROR-MESSAGE: ", errorMessage)
                 } else {
                     self?.updateFavoriteButton()
+                    self?.updateDetailUI()
                 }
             }
         }
