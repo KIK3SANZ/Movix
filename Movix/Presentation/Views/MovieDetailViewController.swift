@@ -64,10 +64,12 @@ class MovieDetailViewController: UIViewController {
     
     private func loadMovieDetails() {
         guard let movieID = movieID else { return }
+        self.showSpinner(true)
         viewModel.loadMovieDetails(movieID: movieID) { [weak self] in
+            self?.showSpinner(false)
             DispatchQueue.main.async {
                 if let errorMessage = self?.viewModel.errorMessage {
-                    print("ERROR-MESSAGE: ", errorMessage)
+                    self?.showAlert(withMessage: errorMessage)
                 } else {
                     self?.updateFavoriteButton()
                     self?.updateDetailUI()

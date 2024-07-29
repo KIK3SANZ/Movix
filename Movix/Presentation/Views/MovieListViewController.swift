@@ -45,19 +45,17 @@ class MovieListViewController: UIViewController {
     }
     
     @IBAction func showSortOptions(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Ordenar por", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Titulo", style: .default, handler: { _ in
+        let titleAction = UIAlertAction(title: "Titulo", style: .default) { _ in
             self.sortMovies(by: 0)
-        }))
-        alert.addAction(UIAlertAction(title: "Fecha", style: .default, handler: { _ in
+        }
+        let dateAction = UIAlertAction(title: "Fecha", style: .default) { _ in
             self.sortMovies(by: 1)
-        }))
-        alert.addAction(UIAlertAction(title: "Popularidad", style: .default, handler: { _ in
+        }
+        let popularityAction = UIAlertAction(title: "Popularidad", style: .default) { _ in
             self.sortMovies(by: 2)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        }
+        let actions = [titleAction, dateAction, popularityAction]
+        self.showSheet(withMessage: "Ordenar por", actions: actions)
     }
     
     
@@ -89,22 +87,18 @@ class MovieListViewController: UIViewController {
     }
     
     private func loadMovies(completion: (() -> Void)? = nil){
+        self.showSpinner(true)
         viewModel.loadPopularMovies{[weak self] in
+            self?.showSpinner(false)
             DispatchQueue.main.async {
                 if let errorMessage = self?.viewModel.errorMessage{
-                    self?.showError(message: errorMessage)
+                    self?.showAlert(withMessage: errorMessage)
                 }else{
                     self?.collectionView.reloadData()
                 }
                 completion?()
             }
         }
-    }
-    
-    private func showError(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

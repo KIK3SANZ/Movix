@@ -44,7 +44,7 @@ class MovieListViewModelImpl: MovieListViewModel {
                 if movies.isEmpty {
                     self.hasMorePages = false
                 } else {
-                    var moviesMap = movies.map { movie in
+                    let moviesMap = movies.map { movie in
                         var updatedMovie = movie
                         updatedMovie.isFavorite = CoreDataHelper.shared.isMovieFavorite(id: movie.id)
                         return updatedMovie
