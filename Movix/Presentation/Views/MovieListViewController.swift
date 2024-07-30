@@ -32,6 +32,7 @@ class MovieListViewController: UIViewController {
     }
     
     func setupUI(){
+        title = "view_movies".localized
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = isGridView ? gridLayout : listLayout
@@ -39,23 +40,23 @@ class MovieListViewController: UIViewController {
         collectionView.register(UINib(nibName: "MovieGridCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MovieGridCell")
         collectionView.register(UINib(nibName: "MovieListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MovieListCell")
         
-        layoutToggleButton.image = UIImage(systemName: isGridView ? "square.split.1x2" : "square.grid.2x2")
+        layoutToggleButton.image = UIImage(systemName: isGridView ? Constants.mode_list : Constants.mode_grid)
         layoutToggleButton.target = self
         layoutToggleButton.action = #selector(toggleLayout)
     }
     
     @IBAction func showSortOptions(_ sender: UIBarButtonItem) {
-        let titleAction = UIAlertAction(title: "Titulo", style: .default) { _ in
+        let titleAction = UIAlertAction(title: "movie_title".localized, style: .default) { _ in
             self.sortMovies(by: 0)
         }
-        let dateAction = UIAlertAction(title: "Fecha", style: .default) { _ in
+        let dateAction = UIAlertAction(title: "movie_release".localized, style: .default) { _ in
             self.sortMovies(by: 1)
         }
-        let popularityAction = UIAlertAction(title: "Popularidad", style: .default) { _ in
+        let popularityAction = UIAlertAction(title: "movie_popularity".localized, style: .default) { _ in
             self.sortMovies(by: 2)
         }
         let actions = [titleAction, dateAction, popularityAction]
-        self.showSheet(withMessage: "Ordenar por", actions: actions)
+        self.showSheet(withMessage: "filter_sort".localized, actions: actions)
     }
     
     
@@ -67,7 +68,7 @@ class MovieListViewController: UIViewController {
             self.collectionView.layoutIfNeeded()
         }
          
-        layoutToggleButton.image = UIImage(systemName: isGridView ? "square.split.1x2" : "square.grid.2x2")
+        layoutToggleButton.image = UIImage(systemName: isGridView ? Constants.mode_list : Constants.mode_grid)
     }
     
     private func setupRefreshControl() {

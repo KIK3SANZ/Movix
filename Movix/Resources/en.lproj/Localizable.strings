@@ -1,0 +1,16 @@
+"btn_confirm" = "Confirm";
+"btn_ok" = "OK";
+"btn_cancel" = "Cancel";
+"view_movies" = "Movies";
+"view_details" = "Details";
+"type_popular" = "Popular";
+"filter_sort" = "Sort by";
+"movie_title" = "Title";
+"movie_release" = "Release Date";
+"movie_overview" = "Overview";
+"movie_popularity" = "Popularity";
+"movie_status" = "Status";
+"movie_languages" = "Spoken Languages";
+"movie_vote_average" = "Vote Average";
+"movie_vote_quantity" = "Votes";
+"error_fetch_movies" = "Error fetching movies: %@";

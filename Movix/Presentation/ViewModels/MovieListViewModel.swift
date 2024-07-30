@@ -53,7 +53,7 @@ class MovieListViewModelImpl: MovieListViewModel {
                 }
                 self.errorMessage = nil
             case .failure(let error):
-                self.errorMessage = "Error fetching movies: \(error.localizedDescription)"
+                self.errorMessage = "error_fetch_movies".localized("\(error.localizedDescription)")
             }
             completion()
         }

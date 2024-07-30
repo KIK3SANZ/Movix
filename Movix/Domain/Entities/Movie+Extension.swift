@@ -1,6 +1,6 @@
 extension Movie {
     var fullPosterURL: String{
-        return APIConstants.imageBaseURL + posterPath
+        return Constants.imageBaseURL + posterPath
     }
     
     var concatenatedGenreNames: String {

@@ -32,13 +32,13 @@ public extension UIViewController{
     
     func showAlert(withMessage message: String){
         let alert = UIAlertController.init(title: Bundle.appName(), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction.init(title: "Entendido", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction.init(title: "btn_ok".localized, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     func showAlert(withMessage message: String, onAction handler: @escaping (UIAlertAction)->Void ){
         let alert = UIAlertController.init(title: Bundle.appName(), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction.init(title: "Entendido", style: .cancel, handler: handler))
+        alert.addAction(UIAlertAction.init(title: "btn_ok".localized, style: .cancel, handler: handler))
         present(alert, animated: true, completion: nil)
     }
     
@@ -49,7 +49,7 @@ public extension UIViewController{
             alert.addAction(action)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "btn_cancel".localized, style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }

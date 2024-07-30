@@ -24,6 +24,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     func setupUI(){
+        title = "view_details".localized
         imvPoster.layer.cornerRadius = 10
         favoriteToggleButton.target = self
         favoriteToggleButton.action = #selector(toggleFavorite)
@@ -33,7 +34,7 @@ class MovieDetailViewController: UIViewController {
     private func updateFavoriteButton() {
         guard let movie = viewModel.movie else { return }
         let isFavorite = CoreDataHelper.shared.isMovieFavorite(id: movie.id)
-        favoriteToggleButton.image = isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        favoriteToggleButton.image = isFavorite ? UIImage(systemName: Constants.heartFill) : UIImage(systemName: Constants.heart)
     }
     
     private func updateDetailUI(){
