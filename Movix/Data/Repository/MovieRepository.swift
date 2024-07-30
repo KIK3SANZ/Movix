@@ -25,7 +25,6 @@ class MovieRepository: MovieRepositoryProtocol {
     
     func fetchMovieDetails(movieID: Int, completion: @escaping (Result<Movie, Error>) -> Void) {
         movieAPI.fetchMovieDetails(movieId: movieID) { result in
-            print("FETCH: ", result)
             completion(result)
         }
     }
