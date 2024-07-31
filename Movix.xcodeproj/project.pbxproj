@@ -49,6 +49,7 @@
 		98D566982C55D51C00B44E9E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D566972C55D51C00B44E9E /* CoreDataManager.swift */; };
 		98D5669A2C55D57300B44E9E /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D566992C55D57300B44E9E /* CoreDataHelper.swift */; };
 		98D5669D2C55D64E00B44E9E /* MoviesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98D5669B2C55D64E00B44E9E /* MoviesModel.xcdatamodeld */; };
+		98DDF51D2C59C94D0051433D /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98DDF51C2C59C94D0051433D /* Details.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		98D566972C55D51C00B44E9E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		98D566992C55D57300B44E9E /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		98D5669C2C55D64E00B44E9E /* MoviesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesModel.xcdatamodel; sourceTree = "<group>"; };
+		98DDF51C2C59C94D0051433D /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		9D661FF78435E302CF8DA4F3 /* Pods-Movix-MovixUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix-MovixUITests.release.xcconfig"; path = "Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B4197C24AE32157A4B3E65EE /* Pods-MovixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovixTests.debug.xcconfig"; path = "Target Support Files/Pods-MovixTests/Pods-MovixTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0B19550E1198AD32CB9CD5D /* Pods-Movix-MovixUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movix-MovixUITests.debug.xcconfig"; path = "Target Support Files/Pods-Movix-MovixUITests/Pods-Movix-MovixUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -306,6 +308,8 @@
 				980CF53A2C54897100C96C70 /* MovieListViewController.swift */,
 				980CF5892C54C0BB00C96C70 /* MovieDetailViewController.swift */,
 				980CF53C2C54897100C96C70 /* Main.storyboard */,
+				98DDF51C2C59C94D0051433D /* Details.storyboard */,
+				980CF5412C54897200C96C70 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,7 +376,6 @@
 				98D10A612C574B2800C9038C /* Int+Ext.swift */,
 				98C9F5CE2C5842260071B976 /* UIView+Ext.swift */,
 				98C9F5D02C5843150071B976 /* UIViewController+Ext.swift */,
-				980CF5412C54897200C96C70 /* LaunchScreen.storyboard */,
 				98C9F5D22C58437D0071B976 /* UIApplication+Ext.swift */,
 				98C9F5D72C58461F0071B976 /* Bundle+Ext.swift */,
 				98C9F5DE2C58577A0071B976 /* String+Ext.swift */,
@@ -507,6 +510,7 @@
 				980CF5432C54897200C96C70 /* Base in Resources */,
 				980CF53E2C54897100C96C70 /* Base in Resources */,
 				986406632C555EA900D91B2E /* MovieListCollectionViewCell.xib in Resources */,
+				98DDF51D2C59C94D0051433D /* Details.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

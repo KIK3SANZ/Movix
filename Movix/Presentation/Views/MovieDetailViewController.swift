@@ -14,6 +14,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var lblLanguages: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     
+    @IBOutlet weak var titleOverview: UILabel!
+    @IBOutlet weak var titleLanguages: UILabel!
+    @IBOutlet weak var titleRelease: UILabel!
+    @IBOutlet weak var titleStatus: UILabel!
+    @IBOutlet weak var titlePopularity: UILabel!
+    
     var viewModel: MovieDetailViewModel!
     var movieID: Int!
 
@@ -25,6 +31,13 @@ class MovieDetailViewController: UIViewController {
     
     func setupUI(){
         title = "view_details".localized
+        titleOverview.text = "movie_overview".localized
+        titleLanguages.text = "movie_languages".localized
+        titleRelease.text = "movie_release".localized
+        titleStatus.text = "movie_status".localized
+        titlePopularity.text = "movie_popularity".localized
+        
+        
         imvPoster.layer.cornerRadius = 10
         favoriteToggleButton.target = self
         favoriteToggleButton.action = #selector(toggleFavorite)
@@ -43,7 +56,7 @@ class MovieDetailViewController: UIViewController {
         lblOverview.text = movie.overview
         lblReleaseDate.text = movie.releaseDate
         let voteAveragePercentage = Int((movie.voteAverage ?? 0.0) * 10)
-        lblVoteAverage.text = "\(voteAveragePercentage)%"
+        lblVoteAverage.text = "\(voteAveragePercentage)% \("movie_vote_average".localized)"
         lblStatus.text = movie.status ?? ""
         lblPopularity.text = "\(movie.popularity)"
         lblGenres.text = movie.concatenatedGenreNames
