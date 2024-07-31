@@ -3,8 +3,8 @@ import Foundation
 protocol MovieListViewModel {
     var popularMovies: [Movie] { get }
     var errorMessage: String? { get }
-    func loadPopularMovies(completion: @escaping () -> Void)
-    func loadMoreMovies(completion: @escaping () -> Void)
+    func loadPopularMovies(category: MovieCategory,completion: @escaping () -> Void)
+    func loadMoreMovies(category: MovieCategory,completion: @escaping () -> Void)
     func sortMovies(by option: Int)
 }
 
@@ -21,22 +21,22 @@ class MovieListViewModelImpl: MovieListViewModel {
         self.fetchPopularMovies = fetchPopularMovies
     }
     
-    func loadPopularMovies(completion: @escaping () -> Void) {
+    func loadPopularMovies(category: MovieCategory,completion: @escaping () -> Void) {
         currentPage = 1
         hasMorePages = true
         popularMovies.removeAll()
-        fetchMovies(completion: completion)
+        fetchMovies(category: category, completion: completion)
     }
     
-    func loadMoreMovies(completion: @escaping () -> Void) {
+    func loadMoreMovies(category: MovieCategory,completion: @escaping () -> Void) {
         guard !isLoading && hasMorePages else { return }
         currentPage += 1
-        fetchMovies(completion: completion)
+        fetchMovies(category: category, completion: completion)
     }
     
-    private func fetchMovies(completion: @escaping () -> Void) {
+    private func fetchMovies(category: MovieCategory, completion: @escaping () -> Void) {
         isLoading = true
-        fetchPopularMovies.execute(page: currentPage) { [weak self] result in
+        fetchPopularMovies.execute(page: currentPage, category: category) { [weak self] result in
             guard let self = self else { return }
             self.isLoading = false
             switch result {

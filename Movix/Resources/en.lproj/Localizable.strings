@@ -4,6 +4,7 @@
 "view_movies" = "Movies";
 "view_details" = "Details";
 "type_popular" = "Popular";
+"type_now" = "Now Playing";
 "filter_sort" = "Sort by";
 "movie_title" = "Title";
 "movie_release" = "Release Date";

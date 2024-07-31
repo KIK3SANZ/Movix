@@ -3,8 +3,10 @@ import UIKit
 class MovieListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var layoutToggleButton: UIBarButtonItem!
+    @IBOutlet weak var segmentCategory: UISegmentedControl!
     private var isGridView: Bool = true
     private let refreshControl = UIRefreshControl()
+    var selectedCategory: MovieCategory = .popular
     
     private let gridLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -43,6 +45,14 @@ class MovieListViewController: UIViewController {
         layoutToggleButton.image = UIImage(systemName: isGridView ? Constants.mode_list : Constants.mode_grid)
         layoutToggleButton.target = self
         layoutToggleButton.action = #selector(toggleLayout)
+        
+        segmentCategory.setTitle("type_popular".localized, forSegmentAt: 0)
+        segmentCategory.setTitle("type_now".localized, forSegmentAt: 1)
+    }
+    
+    @IBAction func changeCategory(_ sender: UISegmentedControl) {
+        selectedCategory = segmentCategory.selectedSegmentIndex == 0 ? .popular : .nowPlaying
+        loadMovies()
     }
     
     @IBAction func showSortOptions(_ sender: UIBarButtonItem) {
@@ -89,7 +99,7 @@ class MovieListViewController: UIViewController {
     
     private func loadMovies(completion: (() -> Void)? = nil){
         self.showSpinner(true)
-        viewModel.loadPopularMovies{[weak self] in
+        viewModel.loadPopularMovies(category: selectedCategory){[weak self] in
             self?.showSpinner(false)
             DispatchQueue.main.async {
                 if let errorMessage = self?.viewModel.errorMessage{
@@ -108,7 +118,7 @@ class MovieListViewController: UIViewController {
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            viewModel.loadMoreMovies{ [weak self] in
+            viewModel.loadMoreMovies(category: selectedCategory){ [weak self] in
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }

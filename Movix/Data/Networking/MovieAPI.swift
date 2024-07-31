@@ -11,9 +11,9 @@ class MovieAPI{
         self.baseURL = "\(urlTMDB)/3"
     }
     
-    // Función para obtener las películas populares
-    func fetchPopularMovies(page: Int,completion: @escaping (Result<[Movie], Error>) -> Void) {
-        let url = URL(string: "\(baseURL)/discover/movie")!
+    // Función para obtener las películas
+    func fetchPopularMovies(page: Int, category:MovieCategory, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        let url = URL(string: "\(baseURL)/movie/\(category.rawValue)")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
           URLQueryItem(name: "include_adult", value: "false"),
@@ -26,7 +26,7 @@ class MovieAPI{
         apiClient.performRequest(url: components.url ?? url) { (result: Result<MovieResponse, Error>) in
             switch result {
                 case .success(let response):
-                completion(.success(response.results ?? []))
+                completion(.success(response.results))
                 case .failure(let error):
                     completion(.failure(error))
             }

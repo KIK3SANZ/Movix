@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-dq-Agw">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="166" width="393" height="652"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a42-HT-ajR">
                                     <size key="itemSize" width="128" height="128"/>
@@ -38,14 +38,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xSR-Yv-4QZ">
+                                <rect key="frame" x="101" y="119" width="191" height="32"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Now Playing"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeCategory:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vtw-dM-iX6"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BOc-dq-Agw" secondAttribute="trailing" id="3Ag-Lr-guR"/>
-                            <constraint firstItem="BOc-dq-Agw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DsH-BL-uOq"/>
-                            <constraint firstItem="BOc-dq-Agw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lpO-ln-jcF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BOc-dq-Agw" secondAttribute="bottom" id="n9P-dy-bJU"/>
+                            <constraint firstItem="xSR-Yv-4QZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7F7-2F-fUj"/>
+                            <constraint firstItem="BOc-dq-Agw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A9v-wP-JmM"/>
+                            <constraint firstItem="xSR-Yv-4QZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="fsu-YN-yro"/>
+                            <constraint firstItem="BOc-dq-Agw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gxa-id-oV0"/>
+                            <constraint firstItem="BOc-dq-Agw" firstAttribute="top" secondItem="xSR-Yv-4QZ" secondAttribute="bottom" constant="16" id="kR3-GS-Mob"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BOc-dq-Agw" secondAttribute="bottom" id="mgs-SD-Lba"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0hR-kJ-9jy">
@@ -59,6 +71,7 @@
                     <connections>
                         <outlet property="collectionView" destination="BOc-dq-Agw" id="guY-kw-ep5"/>
                         <outlet property="layoutToggleButton" destination="bOP-Sg-f9Z" id="S9D-F1-HXx"/>
+                        <outlet property="segmentCategory" destination="xSR-Yv-4QZ" id="K5o-i4-wFu"/>
                         <segue destination="lRJ-Am-v4l" kind="show" identifier="to_detail" id="PKl-C6-Xb2"/>
                     </connections>
                 </viewController>

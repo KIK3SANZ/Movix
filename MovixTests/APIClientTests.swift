@@ -20,7 +20,7 @@ class APIClientTests: XCTestCase {
         let expectation = self.expectation(description: "Completion handler called")
         let movieAPI = MovieAPI(apiClient: sut)
 
-        movieAPI.fetchPopularMovies(page: 1) { result in
+        movieAPI.fetchPopularMovies(page: 1, category: .popular) { result in
             switch result {
             case .success(let movies):
                 XCTAssertGreaterThan(movies.count, 0, "Expected to receive some movies")
@@ -41,7 +41,7 @@ class APIClientTests: XCTestCase {
         sut = APIClient(session: mockSession, token: "tokenfalse")
         movieAPI.apiClient = sut
 
-        movieAPI.fetchPopularMovies(page: 0) { result in
+        movieAPI.fetchPopularMovies(page: 0, category: .nowPlaying) { result in
             switch result {
             case .success:
                 XCTFail("Expected failure but got success")
